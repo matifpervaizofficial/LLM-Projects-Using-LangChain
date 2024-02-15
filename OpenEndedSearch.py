@@ -5,17 +5,19 @@
 
 ## To Integrate our code with OpenAI API
 import os
-from constants import openai_key
-# from langchain.llms import OpenAI
-# from langchain_community.llms import OpenAI
+from credentials import openai_key
 from langchain_openai import OpenAI
 
 # For UI Webpages
 import streamlit as st
 
+from dotenv import load_dotenv
 
-# Seeting the Environment Variables
-os.environ['OPENAI_API_KEY'] = openai_key
+# Checking if the .env is loaded or not - Returns True
+load_dotenv()
+
+# Setting the Environment Variables
+os.environ['OPENAI_API_KEY'] = os.getenv('openai_api_key')
 
 # streamlit framework
 st.title('Search Celebrity using LangChain with OpenAI API')

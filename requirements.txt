@@ -1,4 +1,11 @@
+python-dotenv
 openai
-streamlit
 langchain
 langchain-openai
+pypdf2
+unstructured
+ipykernel
+faiss-cpu
+pypdf
+
+streamlit

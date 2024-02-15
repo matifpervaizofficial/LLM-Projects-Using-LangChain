@@ -6,7 +6,7 @@
 ## To Integrate our code with OpenAI API
 
 import os
-from constants import openai_key
+from credentials import openai_key
 from langchain_openai import OpenAI
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain.chains import LLMChain
@@ -20,8 +20,13 @@ from langchain.memory import ConversationBufferMemory
 # For UI Webpages
 import streamlit as st
 
-# Seeting the Environment Variables
-os.environ['OPENAI_API_KEY'] = openai_key
+from dotenv import load_dotenv
+
+# Checking if the .env is loaded or not - Returns True
+load_dotenv()
+
+# Setting the Environment Variables
+os.environ['OPENAI_API_KEY'] = os.getenv('openai_api_key')
 
 # streamlit framework
 st.title('Celebrity Search using LangChain')
@@ -41,7 +46,6 @@ llm = OpenAI(temperature=0.8)
 
 # Creating 1st chain to call LLMs
 chain = LLMChain(llm= llm, prompt= first_input_prompt, output_key= 'person_info', verbose =True, memory= person_memory)
-
 
 
 #  Prompt Template 2
