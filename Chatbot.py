@@ -3,6 +3,8 @@
 from dotenv import load_dotenv
 load_dotenv()
 import os
+# Setting the Environment Variables
+os.environ['OPENAI_API_KEY'] = os.getenv('openai_api_key')
 
 import streamlit as st
 
